@@ -1,0 +1,15 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+.tblresult {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #e6e6e6;
+}
+.tblresult tr td {
+  border: 0.1em solid #000;
+  padding: 10px 10px 10px 10px;
+}

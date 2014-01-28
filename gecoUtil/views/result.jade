@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	script(src='/javascripts/index.js')
+	h1= title
+		#resultutente
+			table.tblresult
+				thead
+					tr
+					th NT Login
+					th Nome Utente
+					th Gruppo Utente
+					th Testata
+				tbody
+				each collab, i in Record
+					tr
+						td #{collab.DesUtente}
+						td #{collab.NomeUtente}
+						td #{collab.DesGruppoUtente}
+						td #{collab.DesTestata}

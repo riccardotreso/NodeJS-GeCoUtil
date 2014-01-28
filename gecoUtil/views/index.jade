@@ -1,0 +1,13 @@
+
+extends layout
+
+block content
+	script(src='/javascripts/index.js')
+	h1= title
+	div.ricercaUtenti
+	div
+		div
+			span.label Nome utente :
+			input(type="text", name="IdUtente", id="srcIdUtente")
+		div#srcEmployeeSubmit
+			input(type="submit", value="Cerca", id="search")
