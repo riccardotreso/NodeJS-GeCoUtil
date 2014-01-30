@@ -35,7 +35,7 @@ if ('development' == app.get('env')) {
 //app.get('/users', user.list);
 
 //Istanza DB
-var gecoModel = new GeCoModel("miak3d19.sistemi.sole24.net","DbGeco2007","dbgeco00","dbgeco00");
+var gecoModel = new GeCoModel("miak3d19.sistemi.sole24.net",null,null,"DbGeco2007","dbgeco00","dbgeco00");
 
 //Routes
 app.get('/', function(req, res){
@@ -45,19 +45,72 @@ app.get('/', function(req, res){
 });
 
 
-app.get('/result/:qUserID', function(req, res){
-  gecoModel.getUserById(function(error, record){
-      res.render('result', {
-            title: 'Result',
-            Record: record
-        });
-  },req.params.qUserID);
-});
+app.get('/result/:type/:filter', function(req, res){
 
-app.get('/resultJSON/:qUserID', function(req, res){
-  gecoModel.getUserById(function(error, record){
-      res.json(record);
-  },req.params.qUserID);
+	var type = req.params.type;
+	var jsonResponse = req.query.json === 'true';
+	var filter = req.params.filter;
+	if(type === "utente")
+	{
+		gecoModel.getUserById(function(error, record){
+			if(error)
+				res.render('error', {error: error});
+			else
+			{
+				if(!jsonResponse)
+				{
+					
+						
+					res.render('result', {
+						title: 'Ricerca per utente ' + filter,
+						Record: record
+					});
+				}
+				else
+					res.json(record);
+			}
+				
+		},filter);
+	}
+	if(type === "testata")
+	{
+		gecoModel.getUserByTestata(function(error, record){
+			if(error)
+				res.render('error', {error: error});
+			else
+			{
+				if(!jsonResponse)
+				{
+				  res.render('result', {
+						title: 'Ricerca per testata ' + filter,
+						Record: record
+					});
+				}
+				else
+					res.json(record);
+			}
+		},filter);
+	}
+	if(type === "gruppo")
+	{
+		gecoModel.getUserByGruppo(function(error, record){
+			if(error)
+				res.render('error', {error: error});
+			else
+			{
+				if(!jsonResponse)
+				{
+				  res.render('result', {
+						title: 'Ricerca per gruppo ' + filter,
+						Record: record
+					});
+				}
+				else
+					res.json(record);
+			}
+				
+		},filter);
+	}
 });
 
 

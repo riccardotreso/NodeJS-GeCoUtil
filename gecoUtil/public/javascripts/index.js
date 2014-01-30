@@ -4,9 +4,12 @@ $(function(){
 	$("#search").click(function(){
 		var filter = $("#srcIdUtente").val();
 		if(filter === "")
-			alert("Digitare un nome");
+			alert("Digitare un filtro");
 		else
-			window.open("/result/"+filter);
+		{
+			var type = $("input[type='radio'][name='type_filter']:checked").val();
+			window.open("/result/"+type+"/"+filter);
+		}
 	});
 
 });

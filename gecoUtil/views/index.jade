@@ -7,7 +7,14 @@ block content
 	div.ricercaUtenti
 	div
 		div
-			span.label Nome utente :
+			span.label Filtro :
 			input(type="text", name="IdUtente", id="srcIdUtente")
+			div
+			| Utente :
+			input(type="radio", name="type_filter", id="radio_utente", value="utente", checked) 
+			|		Testata :
+			input(type="radio", name="type_filter", id="radio_testata", value="testata")
+			|		Gruppo Utente :
+			input(type="radio", name="type_filter", id="radio_gruppo", value="gruppo")
 		div#srcEmployeeSubmit
 			input(type="submit", value="Cerca", id="search")
