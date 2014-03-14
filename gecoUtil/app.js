@@ -40,8 +40,38 @@ var gecoModel = new GeCoModel("miak3d19.sistemi.sole24.net",null,null,"DbGeco200
 //Routes
 app.get('/', function(req, res){
 	res.render('index', {
+            title: 'Supporto GeCo'
+        });
+});
+
+app.get('/Utenti', function(req, res){
+	res.render('Utenti', {
             title: 'Ricerca Utenti GeCo'
         });
+});
+
+app.get('/Methode', function(req, res){
+	res.render('Methode', {
+            title: 'Ricerca Collaborazioni Methode'
+        });
+});
+
+app.post('/methode/result', function(req, res){
+
+	gecoModel.getCollaborazioniMethode(function(error, record){
+		if(error)
+		{
+			console.log("error");
+			console.log(error);
+			res.json({error: error});
+		}
+		else
+		{
+			res.json(record);
+		}
+			
+	},req.body);
+
 });
 
 

@@ -1,0 +1,22 @@
+
+extends layout
+
+block content
+	script(src='/javascripts/utenti.js')
+	h1= title
+	div.ricercaUtenti
+	div
+		div
+			span.label Filtro :
+			input(type="text", name="IdUtente", id="srcIdUtente")
+			
+			div
+			| Utente :
+			input(type="radio", name="type_filter", id="radio_utente", value="utente", checked) 
+			|		Testata :
+			input(type="radio", name="type_filter", id="radio_testata", value="testata")
+			|		Gruppo Utente :
+			input(type="radio", name="type_filter", id="radio_gruppo", value="gruppo")
+		br
+		div#srcEmployeeSubmit
+			input(type="submit", value="Cerca", id="search")

@@ -1,8 +1,14 @@
 doctype html
 html
+	meta(http-equiv="X-UA-Compatible" content="charset=ISO-8859-1")
 	head
 	title= title
+	link(rel='stylesheet', href='http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css')
 	link(rel='stylesheet', href='/stylesheets/style.css')
 	script(src='/javascripts/jquery-2.1.0.min.js')
+	script(src='/javascripts/jquery-ui.js')
+	script(src='/javascripts/knockout-3.1.0.js')
+	script(src='/javascripts/Common.js')
 	body
+	div.loading
 	block content

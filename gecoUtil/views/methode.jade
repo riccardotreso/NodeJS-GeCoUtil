@@ -1,0 +1,61 @@
+
+extends layout
+
+block content
+	script(src='/javascripts/methode.js')
+	h1= title
+	div.ricercaCollaborazioniMethode
+		table
+			tr 
+				td 
+					span.label Product : 
+				td 
+					input(type="text", name="txtProduct", id="txtProduct", data-bind='value: Filter().Product')
+				td
+					span.label Header :
+				td 
+					input(type="text", name="txtHeader", id="txtHeader", data-bind='value: Filter().Header')
+				td 
+					span.label Section :
+				td 
+					input(type="text", name="txtSection", id="txtSection", data-bind='value: Filter().Section')
+			tr 
+				td 
+					span.label Data :
+				td 
+					input(type="text", name="txtData", id="txtData", data-bind="datepicker: Filter().Data, datepickerOptions: { dateFormat: 'dd/mm/yy' }")
+				td 
+					span.label Titolo :
+				td 
+					input(type="text", name="txtTitolo", id="txtTitolo", data-bind='value: Filter().Titolo')
+				td 
+					span.label Pagina :
+				td 
+					input(type="text", name="txtPagina", id="txtPagina", data-bind='value: Filter().Pagina')
+				td 
+					span.label Bidone :
+				td 
+					input(type="checkbox", name="chkBidone", id="chkBidone", checked, data-bind='checked: Filter().IsBidone')
+	
+		br
+		div#srcCollaborazioni
+			input(type="submit", value="Cerca", id="search", data-bind='click: searchCollaborazioni' )
+			
+		br
+		table.tblresult(data-bind='visible: Result().length > 0')
+				thead
+					tr
+					th Data Collaborazione If
+					th Titolo
+					th Pagina Uscita
+					th Product
+					th Header
+					th Section
+				tbody(data-bind='foreach: Result')
+					tr
+						td(data-bind='text: DataCollaborazioneIf')
+						td(data-bind='text: Titolo')
+						td(data-bind='text: PaginaUscita')
+						td(data-bind='text: Product')
+						td(data-bind='text: Header')
+						td(data-bind='text: Section')
